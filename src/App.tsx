@@ -122,7 +122,7 @@ function App() {
   return (
     <div className={`min-h-screen flex flex-col md:flex-row font-sans transition-colors ${darkMode ? 'dark bg-slate-900' : 'bg-slate-100'}`}>
       {/* LEFT PANEL - FORMS */}
-      <div className="w-full md:w-[45%] lg:w-[40%] xl:w-[35%] p-6 overflow-y-auto h-screen bg-white dark:bg-slate-800 shadow-2xl z-10 flex flex-col custom-scrollbar transition-colors">
+      <div className="w-full md:w-[45%] lg:w-[40%] xl:w-[35%] p-6 md:overflow-y-auto h-auto md:h-screen bg-white dark:bg-slate-800 shadow-2xl z-10 flex flex-col custom-scrollbar transition-colors">
         <header className="mb-8 border-b pb-6 dark:border-slate-700 flex justify-between items-start">
           <div>
             <div className="flex items-center gap-3 mb-2">
@@ -133,13 +133,23 @@ function App() {
             </div>
             <p className="text-slate-500 dark:text-slate-400">Build and download your professional resume.</p>
           </div>
-          <button 
-            onClick={() => setDarkMode(!darkMode)}
-            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition-colors"
-            title="Toggle Dark Mode"
-          >
-            {darkMode ? <Sun size={24} /> : <Moon size={24} />}
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={handlePrint}
+              className="md:hidden flex items-center gap-1 bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-md transition shadow-md text-sm font-medium"
+              title="Download PDF"
+            >
+              <Download size={18} />
+              <span>PDF</span>
+            </button>
+            <button 
+              onClick={() => setDarkMode(!darkMode)}
+              className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition-colors"
+              title="Toggle Dark Mode"
+            >
+              {darkMode ? <Sun size={24} /> : <Moon size={24} />}
+            </button>
+          </div>
         </header>
 
         <div className="flex flex-wrap gap-3 mb-8">
@@ -221,7 +231,7 @@ function App() {
       </div>
 
       {/* RIGHT PANEL - PREVIEW */}
-      <div className="w-full md:w-[55%] lg:w-[60%] xl:w-[65%] bg-slate-200 dark:bg-slate-900 h-screen overflow-y-auto flex flex-col custom-scrollbar relative transition-colors">
+      <div className="w-full md:w-[55%] lg:w-[60%] xl:w-[65%] bg-slate-200 dark:bg-slate-900 h-auto md:h-screen md:overflow-y-auto flex flex-col custom-scrollbar relative transition-colors">
         <div className="sticky top-0 bg-slate-200/90 dark:bg-slate-900/90 backdrop-blur-sm z-20 p-4 border-b border-slate-300 dark:border-slate-700 flex justify-between items-center shadow-sm transition-colors">
           <div className="text-slate-700 dark:text-slate-300 font-medium flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Live Preview
