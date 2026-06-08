@@ -1,7 +1,8 @@
 import { useState, useRef } from 'react';
 import type { ResumeData, PersonalInfo, Experience, Education, Project } from './types';
 import { v4 as uuidv4 } from 'uuid';
-import { useReactToPrint } from 'react-to-print';
+// @ts-ignore
+import html2pdf from 'html2pdf.js';
 import { Download, FileText, Trash2, LayoutTemplate, Moon, Sun } from 'lucide-react';
 
 import { PersonalInfoForm } from './components/forms/PersonalInfoForm';
@@ -98,10 +99,20 @@ function App() {
   const [darkMode, setDarkMode] = useState<boolean>(false);
   const componentRef = useRef<HTMLDivElement>(null);
 
-  const handlePrint = useReactToPrint({
-    contentRef: componentRef,
-    documentTitle: `${resumeData.personalInfo.fullName || 'Resume'}_CV`,
-  });
+  const handlePrint = () => {
+    const element = componentRef.current;
+    if (!element) return;
+    
+    const opt = {
+      margin:       0,
+      filename:     `${resumeData.personalInfo.fullName.replace(/\s+/g, '_') || 'Resume'}_CV.pdf`,
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2, useCORS: true },
+      jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+    };
+    
+    html2pdf().set(opt).from(element).save();
+  };
 
   const handleFillDummyData = () => {
     setResumeData(dummyData);
