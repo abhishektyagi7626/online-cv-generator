@@ -34,15 +34,15 @@ const initialData: ResumeData = {
 
 const dummyData: ResumeData = {
   personalInfo: {
-    fullName: 'Alex Jonathan',
-    jobTitle: 'Senior Frontend Developer',
-    email: 'alex.jonathan@example.com',
-    phone: '+1 234 567 8900',
-    address: 'San Francisco, CA',
-    summary: 'Passionate frontend developer with 5+ years of experience building scalable web applications. Strong expertise in React, TypeScript, and modern CSS frameworks. Proven track record of improving application performance and leading engineering teams.',
-    website: 'alexj.dev',
-    linkedin: 'linkedin.com/in/alexj',
-    github: 'github.com/alexj',
+    fullName: 'Abhishek Tyagi',
+    jobTitle: 'Full Stack Developer',
+    email: 'abhishek.tyagi@example.com',
+    phone: '+91 98765 43210',
+    address: 'New Delhi, India',
+    summary: 'Passionate Full Stack Developer with experience in building scalable web applications. Strong expertise in modern web technologies including React, Node.js, and modern CSS frameworks. Proven track record of solving complex problems and delivering high-quality products.',
+    website: 'abhishektyagi.dev',
+    linkedin: 'linkedin.com/in/abhishektyagi',
+    github: 'github.com/abhishektyagi7626',
   },
   experience: [
     {
